@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 // @ts-ignore
-import { EditableMathField } from 'react-mathquill'
+import { addStyles, EditableMathField } from 'react-mathquill'
 
 function Home() {
- const [latex, setLatex] = useState<string>('\\frac{1}{\\sqrt{2}}\\cdot 2')
+ const [latex, setLatex] = useState<string>('')
 
+ addStyles();
  
   return (
     <EditableMathField
