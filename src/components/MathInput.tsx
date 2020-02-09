@@ -1,16 +1,14 @@
 import React from 'react'
 // @ts-ignore
-import { addStyles, EditableMathField } from 'react-mathquill'
+import { EditableMathField } from 'react-mathquill'
 import Editable from './Editable';
-
-addStyles();
 
 interface State {
   latex: string;
 }
 
 class MathInput<Props, State> extends Editable {
-  readonly state = {
+  state: any = {
     ...this.state,
     latex: ''
   }
