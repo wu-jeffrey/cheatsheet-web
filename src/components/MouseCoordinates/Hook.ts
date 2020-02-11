@@ -4,4 +4,4 @@ import {Context} from './Context'
 
 export function useMouseCoordinates() {
   return React.useContext(Context);
-}
+};

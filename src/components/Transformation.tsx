@@ -1,31 +1,38 @@
 import React, { ReactNode, useState } from "react";
+import { useMouseCoordinates } from "./MouseCoordinates";
 
 export default function useTransformation(child: ReactNode) {
   const [coordinates, setCoordinates] = useState<any>({x: 0, y: 0});
-  const [moveStart, setMoveStart] = useState<any>({x: 0, y: 0});
   const [focused, setFocused] = useState<Boolean>(false);
+  // const mouseCoordinates = useMouseCoordinates();
+  let moveStart = {x: 0, y: 0};
 
   const dragStart = (e: React.DragEvent) => {
-    // @ts-ignore
-    setMoveStart({x: e.target?.offsetLeft, y: e.target?.offsetTop})
-    console.log(moveStart)
-  }
+    moveStart = {
+      x: e.clientX,
+      y: e.clientY,
+    };
+  };
 
   const dragEnd = (e: React.DragEvent) => {
-    debugger;
-    console.log(e);
-  }
+    const dx = e.clientX - moveStart.x;
+    const dy = e.clientY - moveStart.y;
+    const newCoord = {
+      x: coordinates.x + dx,
+      y: coordinates.y + dy,
+    };
 
-
+    setCoordinates(newCoord);
+  };
 
   const handleFocus = () => {
     if (focused) return;
     setFocused(true);
-  }
+  };
 
   const handleBlur = () => {
     setFocused(false);
-  }
+  };
 
   return (
     <>
@@ -33,7 +40,7 @@ export default function useTransformation(child: ReactNode) {
         draggable
         className={"react-draggable"}
         style={{
-          transform: `translate(${coordinates.x}px, ${coordinates.y}px)`
+          transform: `translate(${coordinates.x}px, ${coordinates.y}px)`,
         }}
         onDragStart={dragStart}
         onDragEnd={dragEnd}

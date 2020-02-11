@@ -14,6 +14,7 @@ function Page() {
 
   const handleClick = (event: any) => {
     setChildren([...children,
+      <MathInput key={children.length+1} />,
     ]);
   };
 
@@ -26,15 +27,14 @@ function Page() {
       x: event.clientX,
       y: event.clientY,
     });
-    console.log(mouseCoordinates);
   };
 
   return (
-    <MouseCoordinatesProvider coordinates={mouseCoordinates}>
-      <div className="page" onClick={handleClick} onDragOver={allowDrop} onMouseMove={getMouseCoordinates}>
+    <div className="page" onClick={handleClick} onDragOver={allowDrop} onMouseMove={getMouseCoordinates}>
+      <MouseCoordinatesProvider coordinates={mouseCoordinates}>
         {children}
-      </div>
-    </MouseCoordinatesProvider>
+      </MouseCoordinatesProvider>
+    </div>
   );
 }
 
