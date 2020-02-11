@@ -1,28 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 // @ts-ignore
 import { EditableMathField } from 'react-mathquill'
-import Editable from './Editable';
+import useTransformation from './Transformation';
 
-interface State {
-  latex: string;
+interface Props {
+
 }
 
-class MathInput<Props, State> extends Editable {
-  state: any = {
-    ...this.state,
-    latex: ''
-  }
+export default function MathInput(props: Props) {
+  const [latex, setLatex] = useState<string>('');
 
-  render() {
-    return (
-      <EditableMathField
-        latex={this.state.latex}
-        onChange={(mathField: any) => {
-          this.setState({latex: mathField.latex()})
-        }}
-      />
+  return (
+    useTransformation(
+        <EditableMathField
+          latex={latex}
+          onChange={(mathField: any) => {
+            setLatex(mathField.latex());
+          }}
+        />
     )
-  } 
+  )
 }
-
-export default MathInput;

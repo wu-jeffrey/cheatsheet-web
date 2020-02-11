@@ -14,4 +14,17 @@
   width: 8.5in;
   height: 11in;
   margin: 32px;
+  position: relative;
+}
+
+.react-draggable {
+  position: absolute;
+}
+
+.handle {
+  padding: 4px;
+}
+
+.handle.focused {
+  background-color: turquoise;
 }

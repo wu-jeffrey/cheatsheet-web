@@ -12,6 +12,7 @@
     "@types/react-dom": "^16.9.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-draggable": "^4.2.0",
     "react-mathquill": "^0.2.2",
     "react-scripts": "3.3.1",
     "typescript": "^3.7.5"
@@ -36,5 +37,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.18.3"
   }
 }
