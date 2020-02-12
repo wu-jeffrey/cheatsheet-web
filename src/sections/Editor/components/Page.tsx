@@ -1,7 +1,7 @@
-import React, {useState, ReactNode} from 'react';
+import React, { useState, ReactNode } from "react";
 // @ts-ignore
-import MathInput from '../../../components/MathInput';
-import {MouseCoordinatesProvider} from '../../../components/MouseCoordinates';
+import MathInput from "../../../components/MathInput";
+import { MouseCoordinatesProvider } from "../../../components/MouseCoordinates";
 
 interface Coordinates {
   x: number;
@@ -10,12 +10,13 @@ interface Coordinates {
 
 function Page() {
   const [children, setChildren] = useState<ReactNode[]>([]);
-  const [mouseCoordinates, setMouseCoordinates] = useState<Coordinates>({x: 0, y: 0});
+  const [mouseCoordinates, setMouseCoordinates] = useState<Coordinates>({
+    x: 0,
+    y: 0
+  });
 
   const handleClick = (event: any) => {
-    setChildren([...children,
-      <MathInput key={children.length+1} />,
-    ]);
+    setChildren([...children, <MathInput key={children.length + 1} />]);
   };
 
   const allowDrop = (event: React.DragEvent) => {
@@ -25,12 +26,17 @@ function Page() {
   const getMouseCoordinates = (event: React.MouseEvent) => {
     setMouseCoordinates({
       x: event.clientX,
-      y: event.clientY,
+      y: event.clientY
     });
   };
 
   return (
-    <div className="page" onClick={handleClick} onDragOver={allowDrop} onMouseMove={getMouseCoordinates}>
+    <div
+      className="page"
+      onClick={handleClick}
+      onDragOver={allowDrop}
+      onMouseMove={getMouseCoordinates}
+    >
       <MouseCoordinatesProvider coordinates={mouseCoordinates}>
         {children}
       </MouseCoordinatesProvider>

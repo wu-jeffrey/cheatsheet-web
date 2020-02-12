@@ -2,15 +2,15 @@ import React, { ReactNode, useState } from "react";
 import { useMouseCoordinates } from "./MouseCoordinates";
 
 export default function useTransformation(child: ReactNode) {
-  const [coordinates, setCoordinates] = useState<any>({x: 0, y: 0});
+  const [coordinates, setCoordinates] = useState<any>({ x: 0, y: 0 });
   const [focused, setFocused] = useState<Boolean>(false);
   // const mouseCoordinates = useMouseCoordinates();
-  let moveStart = {x: 0, y: 0};
+  let moveStart = { x: 0, y: 0 };
 
   const dragStart = (e: React.DragEvent) => {
     moveStart = {
       x: e.clientX,
-      y: e.clientY,
+      y: e.clientY
     };
   };
 
@@ -19,7 +19,7 @@ export default function useTransformation(child: ReactNode) {
     const dy = e.clientY - moveStart.y;
     const newCoord = {
       x: coordinates.x + dx,
-      y: coordinates.y + dy,
+      y: coordinates.y + dy
     };
 
     setCoordinates(newCoord);
@@ -40,17 +40,15 @@ export default function useTransformation(child: ReactNode) {
         draggable
         className={"react-draggable"}
         style={{
-          transform: `translate(${coordinates.x}px, ${coordinates.y}px)`,
+          transform: `translate(${coordinates.x}px, ${coordinates.y}px)`
         }}
         onDragStart={dragStart}
         onDragEnd={dragEnd}
         onClick={handleFocus}
         onBlur={handleBlur}
       >
-        <div className={`handle ${focused ? "focused" : null}`}>
-          {child}
-        </div>
+        <div className={`handle ${focused ? "focused" : null}`}>{child}</div>
       </div>
     </>
-  )
+  );
 }

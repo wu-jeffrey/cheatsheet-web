@@ -1,5 +1,5 @@
-import React from 'react';
-import {Context} from './Context';
+import React from "react";
+import { Context } from "./Context";
 
 interface Coordinates {
   x: number;
@@ -11,7 +11,7 @@ interface Props {
   coordinates: Coordinates;
 }
 
-function Provider({children, coordinates}: Props) {
+function Provider({ children, coordinates }: Props) {
   return <Context.Provider value={coordinates}>{children}</Context.Provider>;
 }
 
