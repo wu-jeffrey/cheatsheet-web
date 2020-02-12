@@ -10,9 +10,7 @@ export default function useTransformation(
   position: Coordinates
 ) {
   const [coordinates, setCoordinates] = useState<any>(position);
-  console.log(coordinates);
   const [focused, setFocused] = useState<Boolean>(false);
-  // const mouseCoordinates = useMouseCoordinates();
   let moveStart = { x: 0, y: 0 };
 
   const dragStart = (e: React.DragEvent) => {
