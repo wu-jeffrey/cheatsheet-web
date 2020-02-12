@@ -16,7 +16,15 @@ function Page() {
   });
 
   const handleClick = (event: any) => {
-    setChildren([...children, <MathInput key={children.length + 1} />]);
+    const position = {
+      x: event.clientX - event.target.offsetLeft,
+      y: event.clientY - event.target.offsetTop
+    };
+
+    setChildren([
+      ...children,
+      <MathInput key={children.length + 1} position={position} />
+    ]);
   };
 
   const allowDrop = (event: React.DragEvent) => {

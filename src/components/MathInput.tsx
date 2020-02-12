@@ -3,9 +3,16 @@ import React, { useState } from "react";
 import { EditableMathField } from "react-mathquill";
 import useTransformation from "./Transformation";
 
-interface Props {}
+interface Coordinates {
+  x: number;
+  y: number;
+}
+interface Props {
+  position: Coordinates;
+}
 
 export default function MathInput(props: Props) {
+  const { position } = props;
   const [latex, setLatex] = useState<string>("");
 
   return useTransformation(
@@ -14,6 +21,7 @@ export default function MathInput(props: Props) {
       onChange={(mathField: any) => {
         setLatex(mathField.latex());
       }}
-    />
+    />,
+    position
   );
 }

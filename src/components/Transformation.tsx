@@ -1,8 +1,16 @@
 import React, { ReactNode, useState } from "react";
-import { useMouseCoordinates } from "./MouseCoordinates";
 
-export default function useTransformation(child: ReactNode) {
-  const [coordinates, setCoordinates] = useState<any>({ x: 0, y: 0 });
+interface Coordinates {
+  x: number;
+  y: number;
+}
+
+export default function useTransformation(
+  child: ReactNode,
+  position: Coordinates
+) {
+  const [coordinates, setCoordinates] = useState<any>(position);
+  console.log(coordinates);
   const [focused, setFocused] = useState<Boolean>(false);
   // const mouseCoordinates = useMouseCoordinates();
   let moveStart = { x: 0, y: 0 };
@@ -25,7 +33,8 @@ export default function useTransformation(child: ReactNode) {
     setCoordinates(newCoord);
   };
 
-  const handleFocus = () => {
+  const handleFocus = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (focused) return;
     setFocused(true);
   };
