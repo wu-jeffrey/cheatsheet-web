@@ -2,6 +2,9 @@
 
 ⚛️ Boostrapped using create-react-app
 
+### 3rd Technologies
+- **Mathquill** used for inputting math equations
+
 ## Available Scripts
 
 In the project directory, you can run:
