@@ -1,7 +1,13 @@
 import React from "react";
+import {useHistory} from 'react-router';
 
-function Home() {
-  return <h1>Home</h1>;
+export default function Home() {
+  const history = useHistory();
+
+  return (
+    <>
+      <h1> HOME </h1>
+      <button onClick={() => history.push({pathname: "/editor"})}> editor </button>
+    </>
+  );
 }
-
-export default Home;
