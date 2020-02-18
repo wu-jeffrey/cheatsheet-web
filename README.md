@@ -2,7 +2,7 @@
 
 ⚛️ Boostrapped using create-react-app
 
-### 3rd Technologies
+### 3rd Party Technologies
 - **Mathquill** used for inputting math equations
 
 ## Available Scripts
